@@ -1,0 +1,13 @@
+master:
+  build: Master/
+  net: "host"
+  env_file: .env
+  volumes:
+    - Master/etc/mysql/:/etc/mysql
+
+slave:
+  build: Slave/
+  net: "host"
+  env_file: .env
+  volumes:
+    - Slave/etc/mysql/:/etc/mysql
