@@ -1,13 +1,21 @@
 master:
-  build: Master/
-  net: "host"
-  env_file: .env
+  image: mariadb:latest
+  environment:
+    MYSQL_ROOT_PASSWORD: 1dumbpassword
+    MYSQL_DATABASE: sakila
+    MYSQL_USER: mysqlusr
+    MYSQL_PASSWORD: password11
   volumes:
-    - Master/etc/mysql/:/etc/mysql
+    - ./Master/etc/mysql/:/etc/mysql
+    - ./Master/var/lib/mysql/:/var/lib/mysql
 
 slave:
-  build: Slave/
-  net: "host"
-  env_file: .env
+  image: mariadb:latest
+  environment:
+    MYSQL_ROOT_PASSWORD: 1dumbpassword
+    MYSQL_DATABASE: sakila
+    MYSQL_USER: mysqlusr
+    MYSQL_PASSWORD: password11
   volumes:
-    - Slave/etc/mysql/:/etc/mysql
+    - ./Slave/etc/mysql/:/etc/mysql
+    - ./Slave/var/lib/mysql/:/var/lib/mysql
